@@ -4,8 +4,12 @@ Dans ce tutoriel, nous allons déployer moodle en tant que webservice sur un clu
 
 Premierement nous commenceront par installer kubernete via Rancher2 (rke2), qui utilise containerd comme engine à la place de docker engine.
 
-- Pre-requis: 2 debian12 (rke2master et rke2node)
-- Stack: 
+- Pre-requis: ouverture des ports
+<img width="382" height="382" alt="Capture d’écran 2025-12-21 101401" src="https://github.com/user-attachments/assets/8da3ed29-24c1-4341-9365-f6c26f0406c2" />
+
+<img width="382" height="382" alt="image" src="https://github.com/user-attachments/assets/463df7cc-c9b5-46f3-9487-0be6002d6736" />
+
+- Stack: 2 debian12 (rke2master et rke2node), rke2, cilium,
   
 ## Installation rke2 sur `rke2master`
 - Mise à jour des deux vms 
@@ -31,12 +35,12 @@ systemctl start rke2-server.service
 ```
 - Suivre en logs les configurations
 
-<img width="943" height="553" alt="Capture d’écran 2025-12-21 085907" src="https://github.com/user-attachments/assets/46b74463-17f3-4a31-b6e2-e6b0e45ada11" />
+<img width="382" height="553" alt="Capture d’écran 2025-12-21 085907" src="https://github.com/user-attachments/assets/46b74463-17f3-4a31-b6e2-e6b0e45ada11" />
 
 - On exporte le chemin en variables d'environnement les binaires ``
-<img width="660" height="37" alt="Capture d’écran 2025-12-21 094515" src="https://github.com/user-attachments/assets/f6d8f4d9-dec9-4afb-831f-96df179623d5" />
+<img width="382" height="37" alt="Capture d’écran 2025-12-21 094515" src="https://github.com/user-attachments/assets/f6d8f4d9-dec9-4afb-831f-96df179623d5" />
 
-<img width="592" height="31" alt="Capture d’écran 2025-12-21 095435" src="https://github.com/user-attachments/assets/8d0c36b8-6916-4e69-9765-e42b3a8459c5" />
+<img width="382" height="31" alt="Capture d’écran 2025-12-21 095435" src="https://github.com/user-attachments/assets/8d0c36b8-6916-4e69-9765-e42b3a8459c5" />
 
 
 - On configure kubectl
@@ -87,7 +91,7 @@ systemctl start rke2-agent.service
 - Suivi des logs
 <img width="942" height="567" alt="image" src="https://github.com/user-attachments/assets/353ac38e-65b1-4e7b-9177-f92f650b4f4c" />
 
-- On Vérifie bien que le node rke2node s'est bien connecter au cluser
+- On Vérifie bien que le node rke2node s'est bien connecter au cluster
 <img width="690" height="77" alt="Capture d’écran 2025-12-21 100429" src="https://github.com/user-attachments/assets/0e8648c8-e490-406c-8c62-f760bb3e8f89" />
 
 
