@@ -94,6 +94,8 @@ systemctl start rke2-agent.service
 - On Vérifie bien que le node rke2node s'est bien connecter au cluster
 <img width="690" height="77" alt="Capture d’écran 2025-12-21 100429" src="https://github.com/user-attachments/assets/0e8648c8-e490-406c-8c62-f760bb3e8f89" />
 
+## Configuration cni Cilium
+
 
 ## déploiement du service 
 
