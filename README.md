@@ -124,6 +124,20 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash
 ```
 helm ls --all-namespaces
 ```
+
+- On desactive les Addons
+
+```
+# /etc/rancher/rke2/config.yaml
+disable:
+  - rke2-coredns
+  - rke2-ingress-nginx
+  - rke2-metrics-server
+  - rke2-snapshot-controller
+  - rke2-snapshot-controller-crd
+  - rke2-snapshot-validation-webhook
+```
+
 ## Configuration cni Cilium
 C'est canal qui est installé comme cni par default, nous allons mettre à la place Cilium pour générer le trafic dans le cluster.
 -a on desactive canal
