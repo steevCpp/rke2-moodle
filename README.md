@@ -126,16 +126,60 @@ helm ls --all-namespaces
 ```
 ## Configuration cni Cilium
 C'est canal qui est installé comme cni par default, nous allons mettre à la place Cilium pour générer le trafic dans le cluster.
+-a on desactive canal
+
+```
+# /etc/rancher/rke2/config.yaml
+cni: none
+```
 
 ## API Gateway traefik
 
 - api gateway traefik: https://doc.traefik.io/traefik/expose/kubernetes/
 
 
-## Service Moodle 
+## Service Moodle helm
+- On ajoute le repo bitnami qui contient la cchart de moodle
+```
+helm repo add bitnami https://charts.bitnami.com/bitnami
+```
 
+```
+helm search repo moodle
+```
 
-  
+```
+kubectl create namespace moodle
+```
+- On installe moodle dans le namespace moodle depuis l'image bitnami/moodle
+```
+helm install moodle bitnami/moodle --namespace moodle
+```
+- Voir toutes les ressources qui on été créées dans le namespace moodle
+```
+ kubectl get all -n moodle
+```
+<img width="598" height="201" alt="Capture d’écran 2025-12-26 211258" src="https://github.com/user-attachments/assets/f08447ad-3f72-4b14-9854-3f9c9b25ffdd" />
+
+- On change le type de service pour nos tests, il est à LoadBalancer (ligne 499 [chart helm de moodle](https://github.com/bitnami/charts/blob/main/bitnami/moodle/values.yaml) on va le mettre à NodePort
+
+```
+helm upgrade moodle bitnami/moodle --namespace moodle --set service.type=NodePort --set moodlePassword=$MOODLE_PASSWORD --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD
+```
+- On vérifie bien que le type de service a été changé.
+
+```
+ kubectl get all -n moodle
+```
+
+- On supprime les ressources créées.
+```
+helm uninstall moodle --namespace moodle
+```
+
+```
+kubectl delete namespace moodle
+```
 ## Installation du Dashboard
 
 
