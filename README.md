@@ -116,6 +116,9 @@ systemctl start rke2-agent.service
 
 <img width="658" height="42" alt="Capture d’écran 2025-12-22 102339" src="https://github.com/user-attachments/assets/940a2a69-fa56-4539-85e9-9b4a6f37c2a5" />
 
+![image](https://github.com/user-attachments/assets/7a98a1dd-85e7-4d21-9eea-b0320266a08d)
+
+
 - helm version renvoie command not found et on remarque se sont les pods créés à partir des charts helm qui ne sont pas lancés. Installons helm le master
 ```
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash
