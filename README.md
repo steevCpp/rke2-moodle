@@ -112,7 +112,7 @@ systemctl start rke2-agent.service
 - Tout les manifests du `/var/lib/rancher/rke2/server/manifests` n'ont pas été déployé `kubectl get addon -A`
 <img width="598" height="167" alt="Capture d’écran 2025-12-22 064645" src="https://github.com/user-attachments/assets/e1c8ce86-2a71-44cd-8b34-f865450c795b" />
 
-- Les logs des pods sont `/var/log/pods` ou ` kubectl logs nom du pod -m kube-system` ou ` kubectl cluster-info dump | grep "error" | head` ou `/var/lib/rancher/rke2/agent/logs/kubelet.log`
+- Les logs/debug des pods sont `/var/log/pods` ou ` kubectl logs nom du pod -m kube-system` ou ` kubectl cluster-info dump | grep "error" | head` ou `/var/lib/rancher/rke2/agent/logs/kubelet.log` ou `kubectl logs -n kube-system -l k8s-app=kube-dns` ou `kubectl get events -A`
 
 <img width="658" height="42" alt="Capture d’écran 2025-12-22 102339" src="https://github.com/user-attachments/assets/940a2a69-fa56-4539-85e9-9b4a6f37c2a5" />
 
@@ -138,7 +138,9 @@ disable:
   - rke2-snapshot-validation-webhook
 ```
 
-## Configuration cni Cilium
+## Configuration CNI (Container Network Interface) Cilium
+Cilium une adresse IP à chaque Pod et s'assurer que le Pod A sur le Node 1 peut parler au Pod B sur le Node 2.
+
 C'est canal qui est installé comme cni par default, nous allons mettre à la place Cilium pour générer le trafic dans le cluster.
 -a on desactive canal
 
